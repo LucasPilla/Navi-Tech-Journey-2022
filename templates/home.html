@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+
+
+{% block header %}
+
+<header id="header" class="fixed-top ">
+  <div class="container-fluid">
+
+  <div class="row justify-content-center">
+      <div class="col-xl-9 d-flex align-items-center justify-content-lg-between">
+      <h1 class="logo me-auto me-lg-0"><a href="#hero">Renove</a></h1>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+          <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#services">Serviços</a></li>
+          <li><a class="nav-link scrollto" href="#produtos">Produtos</a></li>
+          <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li> 
+          <li><a class="nav-link scrollto" href="/form">Oferte seu pruduto</a></li>            </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div>
+          
+      <a href="/marketplace" class="get-started-btn scrollto">Loja</a>
+      </div>
+      </div>
+  </div>
+
+  </div>
+</header>
+
+{% endblock %}
+
+
+{% block body %}
+
+<!-- HERO -->
+<section id="hero" class="d-flex flex-column justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-8">
+        <h1>Conheça a Renove</h1>
+        <h2>A startup que está modernizando o setor energético</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END HERO -->
+
+<section id="services">
+
+  <div class="container px-4 py-5" >
+      <h2 class="pb-2 border-bottom">Serviços</h2>
+
+      <div class="col d-flex align-items-start py-4">
+        <div class="bg-warning text-dark me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+        </div>
+        <div>
+          <h4>Cleanergy</h4>
+          <p>O conceito Cleanergy usa como base os créditos de carbono, mas além dos créditos de carbono gerados na produção, esse ativo intangível contempla também toda a parte de sustentabilidade sem a destruição do meio ambiente como ocorre em outras fontes, seja na operação ou construção das geradoras. Com isso, tornamos possível a produção sem agredir o meio ambiente e separamos esse ativo intangível do produto energia, dando a ele o nome de Cleanergy.</p>
+        
+        </div>
+      </div>
+      <div class="col d-flex align-items-start py-4">
+        <div class="bg-warning text-dark flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+        </div>
+        <div>
+          <h4>Validação</h4>
+          <p>Após a oferta que é enviada no nosso formulário e aprovação inicial, solicitamos a documentação referente à estrutura do fornecedor. Além disso, analisamos dados fornecidos pela ONS, como fator de capacidade de geração da região pra validação das projeções.</p>
+          
+        </div>
+      </div>
+      <div class="col d-flex align-items-start py-4">
+        <div class="bg-warning text-dark flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+        </div>
+        <div>
+          <h4>Após a compra</h4>
+          <p>Nos comprometemos a acompanhar a nossa fonte fornecedora para garantir que a energia foi de fato produzida e de forma sustentável, além disso nos comprometemos em certificar que a mesma energia não foi utilizada para vender diferentes pacotes de ativos intangíveis na distribuidora ou para outra rede de comércio.</p>
+        
+        </div>
+      </div>
+
+  </div>
+
+</section >
+
+<section id="produtos">
+
+  <div class="container" >
+    <h2 class="pb-2 border-bottom">Produtos</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col align-items-center">
+        <div class="px-5 py-2">
+          <img width="150px" src="{{ url_for('static',filename='img/so_raio.png') }}" alt="">
+        </div>
+        <div>
+          <h4>Crédito de Energia</h4>
+          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+        </div>
+      </div>
+      <div class="col align-items-center">
+      <div class="px-5 py-2">
+        <img width="150px" src="{{ url_for('static',filename='img/so_verde.png') }}" alt="">
+      </div>
+        <div>
+          <h4>Cleanergy</h4>
+          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+        </div>
+      </div>
+      <div class="col align-items-center">
+
+        <div class="px-5 py-2">
+          <img width="150px" src="{{ url_for('static',filename='img/raioverde.png') }}" alt="">
+        </div>
+      
+        <div>
+          <h4>Energia + Cleanergy</h4>
+          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+        
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section >
+
+<section id="about">
+  <div class="container px-4 py-5" >
+    <h2 class="pb-2 border-bottom">Sobre nós</h2>
+
+    <div class="row featurette align-items-center">
+      <div class="col-md-7 order-md-2">
+        <p class="lead">A Renove é a única empresa atualmente do mercado especializada em compra e venda de energia elétrica baseada em geração distribuída (GD). Além disso, temos o Cleanergy, um ativo único baseado em crédito de carbono e outros fatores ambientais que são preservados com geração de energia de forma limpa referente aos produtos que são oferecidos em nossa plataforma.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="{{ url_for('static',filename='img/logo.png') }}" class="featurette-image img-fluid mx-auto">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+<header id="header" class="fixed-top ">
+  <div class="container-fluid">
+
+    <div class="row justify-content-center">
+      <div class="col-xl-9 d-flex align-items-center justify-content-lg-between">
+        <h1 class="logo me-auto me-lg-0"><a href="/">Renove</a></h1>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+          <ul>
+            <li><a class="nav-link scrollto" href="/">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Produtos
+              </a>
+            </li>
+            <li>
+              <a class="nav-link" href="#">
+              Pedidos
+            </a>
+                </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div>
+    </div>
+
+  </div>
+</header>
+
+{% endblock %}
+  
+
+{% block body %}
+  
+<div class="container">
+  
+<section class="py-5 px-3 justify-content-center">
+
+      <div class="row py-5">
+        <div class="px-5 col-3">
+
+          <p> Selecione o tipo </p>
+          <select class="form-select" id="filter_tipo" onchange="filter_tipo()">
+            <option value="todos" selected>Todos</option>
+            <option value="Energia">Energia</option>
+            <option value="Cleanergy">Cleanergy</option>
+            <option value="Cleanergy + Energia">Ambos</option>
+          </select>
+
+        </div>
+
+        <div class="px-5 col-3">
+
+          <p> Quantidade (KWh) </p>
+          <input class="form-control" type="number" placeholder="Min" id="quant_min" onchange="filter_quantidade()">
+          <input class="form-control" type="number" placeholder="Max" id="quant_max" onchange="filter_quantidade()">
+        </div>
+      </div>
+
+      <div class="container" id="myItems">
+
+
+
+        <div class="col card" style="width: 12rem; margin: 1vw;">
+          <div class="card-body">
+
+            <h4 class="card-title text-center">Cleanergy</h4>
+            <div class="">
+              <p> <img width="20px" src="{{ url_for('static',filename='img/fonte.png') }}" alt="">Placa Solar</p>
+              <p class="quant"> <img width="20px" src="{{ url_for('static',filename='img/bateria.png') }}" alt="">10 MWh</p>
+              <p> <img width="20px" src="{{ url_for('static',filename='img/calendario.png') }}" alt=""> Jul 22 - Set 22 </p>
+              <p> <img width="20px" src="{{ url_for('static',filename='img/folha.png') }}" alt=""> 5 c.carbono</p>
+              <p> <img width="20px" src="{{ url_for('static',filename='img/cifrao.png') }}" alt=""> 1750,00 </p>
+            </div>
+
+            <div><a class="btn btn-outline-dark" href="#">Comprar</a></div>
+          </div>
+
+          <span class="position-absolute bottom-0 end-0"><img width="75px" src="{{ url_for('static',filename='img/so_verde.png') }}" alt=""> <span class="visually-hidden">unread messages</span></span>
+        </div>
+
+        <div class="col card" style="width: 12rem; margin: 1vw;">
+          <div class="card-body">
+
+            <h5 class="card-title text-center">Cleanergy</h5>
+            <div class="">
+              <p> <img width="20px" src="{{ url_for('static',filename='img/fonte.png') }}" alt=""> </p>
+              <p class="quant"> <img width="20px" src="{{ url_for('static',filename='img/bateria.png') }}" alt="">  </p>
+              <p> <img width="20px" src="{{ url_for('static',filename='img/calendario.png') }}" alt="">  </p>
+              <p> <img width="20px" src="{{ url_for('static',filename='img/folha.png') }}" alt=""> </p>
+              <p> <img width="20px" src="{{ url_for('static',filename='img/cifrao.png') }}" alt="">  </p>
+            </div>
+
+            <div><a class="btn btn-outline-dark" href="#">Comprar</a></div>
+          </div>
+
+          <span class="position-absolute bottom-0 end-0"><img width="75px" src="{{ url_for('static',filename='img/so_verde.png') }}" alt=""> <span class="visually-hidden">unread messages</span></span>
+        </div>
+
+  </div>
+
+</section>
+</div>
+
+</div>
+</div>
+
+
+<script src="{{ url_for('static',filename='dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+<script src="{{ url_for('static',filename='js/marketplace.js') }}"></script>
+<script>
+  function filter_tipo() {
+      var input, filter, cards, cardContainer, h5, title, i;
+      input = document.getElementById("filter_tipo");
+      filter = input.value;
+      cardContainer = document.getElementById("myItems");
+      cards = cardContainer.getElementsByClassName("card");
+      for (i = 0; i < cards.length; i++) {
+          title = cards[i].querySelector(".card-body h5.card-title");
+          console.log(filter)
+          if (filter == "todos" || title.innerText == filter) {
+              cards[i].style.display = "";
+          } else {
+              cards[i].style.display = "none";
+          }
+      }
+  }
+
+  function filter_quantidade() {
+      var input, filter, cards, cardContainer, h5, title, i;
+      input_min = document.getElementById("quant_min").value;
+      input_max = document.getElementById("quant_max").value;
+      console.log()
+      cardContainer = document.getElementById("myItems");
+      cards = cardContainer.getElementsByClassName("card");
+      console.log(cards)
+      for (i = 0; i < cards.length; i++) {
+          value = cards[i].querySelector(".card-body .quant");
+          if (value > input_min && value < input_max) {
+              cards[i].style.display = "";
+          } else {
+              cards[i].style.display = "none";
+          }
+      }
+  }
+</script>
+ 
+{% endblock %}

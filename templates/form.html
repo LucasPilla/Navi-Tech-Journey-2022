@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block body %}
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h2>Oferte seus ativos de energia limpa</h2>
+      <p class="lead">Preencha o formulário abaixo com os dados da empresa e do ativo oferecido.</p>
+    </div>
+    
+      <div class="col-md-12 col-lg-12">
+        <h4 class="mb-3">Produtor / Empresa</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="cnpj" class="form-label">CNPJ / CPF</label>
+              <input type="text" class="form-control" id="cnpj" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                CNPJ / CPF obrigatório.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="nome" class="form-label">Nome ou Razão social</label>
+              <input type="text" class="form-control" id="nome" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Nome ou Razão social obrigatório.
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label for="cep" class="form-label">CEP</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" id="cep" placeholder="" required>
+              <div class="invalid-feedback">
+                  CEP obrigatório.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label for="numero" class="form-label">Número <span class="text-muted">(Opcional)</span></label>
+              <input type="number" class="form-control" id="numero" placeholder="">
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Caso seja zona rural, especifique aqui sua localização com referências:</label>
+              <input type="text" class="form-control" id="address" placeholder="Distrito ...">
+            </div>
+
+
+            <div class="col-6">
+              <div class="py-3">
+              <label for="telefone" class="form-label">Telefone / Celular</label>
+              <input type="text" class="form-control" id="telefone" placeholder="" required>
+              <div class="invalid-feedback">
+                Contato obrigatório.
+              </div>
+              </div>
+
+              <div>
+              <label for="email" class="form-label">E-mail <span class="text-muted">(Opcional)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              </div>
+            </div>
+
+            <div class="col-6 py-4">
+              <label for="geracao" class="form-label">Método de geração de energia:</label>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="option1" name="tipo">
+                <label class="form-check-label" for="option1">Solar</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="option2" name="tipo">
+                <label class="form-check-label" for="option2">Biomassa</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="option3" name="tipo">
+                <label class="form-check-label" for="option3">Outro</label>
+              </div>
+    
+              <input type="text" class="form-control" id="outro" placeholder="Especifique ...">
+
+     
+              <div class="invalid-feedback">
+                Selecione alguma das opções.
+              </div>
+            </div>
+          </div>
+
+          <div class="row py-5">
+          <h4 class="mb-3">Produto</h4>
+   
+            <div class="invalid-feedback">
+              Selecione alguma das opções.
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="quant" class="form-label">Quantidade (KWh)</label>
+              <div class="input-group has-validation">
+               <input type="number" class="form-control" id="quant" placeholder="" required>
+              <div class="invalid-feedback">
+                  Obrigatório.
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="input-group date" data-provide="datepicker">
+                <label for="inicio" class="form-label">Período estimado de produção:</label>
+                <div class="input-group">
+                  <input id="inicio" type="text" class="form-control" placeholder="Inicio" required>
+                </div>
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
+              <div class="input-group date" data-provide="datepicker">
+                <div class="input-group">
+                  <input id="inicio" type="text" class="form-control" placeholder="Fim" required>
+                </div>
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="py-3">
+          <button class="w-100 btn btn-warning btn-lg" type="submit">Enviar</button>
+        </div>
+        
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2022 Navi Tech Journey</p>
+  </footer>
+</div>
+
+<script src="{{ url_for('static',filename='dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/form-validation.js') }}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script>
+  $('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+  });
+</script>
+
+{% endblock %}
